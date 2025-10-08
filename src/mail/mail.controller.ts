@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
 import { MailService } from './mail.service';
 import { WeatherService } from 'src/weather/weather.service';
+import { ApiKeyGuard } from 'src/guards/apikey.guards';
 
 @Controller('mail')
 export class MailController {
@@ -11,6 +12,7 @@ export class MailController {
     ) {}
 
     @Get('forecast/today')
+    @UseGuards(ApiKeyGuard)
     async mailTodayForecast() {
         const forecast = await this.weatherService.getForecast('Marilia', 1);
         
