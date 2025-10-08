@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Relatório de Previsão do Tempo</title>
+</head>
+<body style="font-family: Arial, sans-serif; color: #333;">
+  <h2>☀️ Previsão do Tempo - {{location}}</h2>
+  <p><strong>Data:</strong> {{date}}</p>
+  <p><strong>Temperatura Máxima:</strong> {{maxTemp}}°C</p>
+  <p><strong>Temperatura Mínima:</strong> {{minTemp}}°C</p>
+  <hr>
+  {{#if rainyHours.length}}
+    <p><strong>🌧️ Horários com chance de chuva:</strong></p>
+    <ul>
+      {{#each rainyHours}}
+        <li>{{hour}} — {{chance}}% de probabilidade</li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>Sem previsão de chuva para hoje 🎉</p>
+  {{/if}}
+  <hr>
+  <small>Relatório automático gerado pelo NestJS Weather Service</small>
+</body>
+</html>
