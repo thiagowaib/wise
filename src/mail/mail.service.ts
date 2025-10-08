@@ -56,6 +56,7 @@ export class MailService {
             const info = await this.transporter.sendMail(mailOptions);
             return {sucess: true, messageId: info.messageId};
         } catch (err) {
+            console.log('Falha ao enviar email', {err});
             throw new Error('Falha ao enviar email', err);
         }
     }
